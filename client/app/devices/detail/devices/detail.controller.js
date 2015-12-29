@@ -15,10 +15,11 @@ angular.module('kairosApp')
                     id: $routeParams.id
                 }, function(data) {
                     $scope.deviceData = data[0];
-                    if(!$scope.deviceData){
+                    if (!$scope.deviceData) {
                         $location.path("/devices");
-                    }else{
+                    } else {
                         initMap();
+                        initSlider();
                     }
                 }, function() {
                     $location.path("/");
@@ -112,6 +113,19 @@ angular.module('kairosApp')
             }
 
 
+        }
+
+        function initSlider() {
+            var slider = document.getElementById('slider');
+            noUiSlider.create(slider, {
+                start: [20, 80],
+                connect: true,
+                step: 1,
+                range: {
+                    'min': 0,
+                    'max': 100
+                }
+            });
         }
 
         function getLatLong(event) {
