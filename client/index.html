@@ -31,9 +31,16 @@
     <![endif]-->
 
     <!-- Add your site or application content here -->
-    <div ng-view=""></div>
+    <main>
+        <div navbar></div>
+        <div ng-view =""></div>
+        <div sidenav></div>
+    </main>
+    <div footer></div>
 
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAmSYJJ2H9gWz0Dp0P3e5VdIZcqV2_SxeM"></script>
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/js/materialize.min.js"></script>
     
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
     <script>
@@ -72,12 +79,19 @@
           <script src="app/account/signup/signup.controller.js"></script>
           <script src="app/admin/admin.controller.js"></script>
           <script src="app/admin/admin.js"></script>
+          <script src="app/devices/detail/devices/detail.controller.js"></script>
+          <script src="app/devices/detail/devices/detail.js"></script>
+          <script src="app/devices/devices.controller.js"></script>
+          <script src="app/devices/devices.js"></script>
           <script src="app/main/main.controller.js"></script>
           <script src="app/main/main.js"></script>
+          <script src="components/Device/Device.service.js"></script>
           <script src="components/auth/auth.service.js"></script>
           <script src="components/auth/user.service.js"></script>
+          <script src="components/footer/footer.directive.js"></script>
           <script src="components/mongoose-error/mongoose-error.directive.js"></script>
-          <script src="components/navbar/navbar.controller.js"></script>
+          <script src="components/navbar/navbar.directive.js"></script>
+          <script src="components/sidenav/sidenav.directive.js"></script>
           <!-- endinjector -->
         <!-- endbuild -->
 </body>

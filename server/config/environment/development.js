@@ -14,5 +14,5 @@ module.exports = {
         callbackURL: (process.env.DOMAIN || '') + '/auth/google/callback'
     },
 
-  seedDB: true
+  seedDB: false
 };
