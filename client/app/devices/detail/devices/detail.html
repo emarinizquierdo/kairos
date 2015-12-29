@@ -10,9 +10,12 @@
                 <p>{{deviceData.description}}</p>
                 <h5>Status</h5>
                 <p>{{deviceData.status}}</p>
+                <h5>When do you want to be warned about weather?</h5>
                 <p class="range-field">
-                    <h5>Status</h5>
-                    <div id="slider"></div>
+                    <h6>Go work at {{deviceData.minHour}} hours <span class="weather-icon {{predictions.minHour.icon}}"></span></h6>
+                </p>
+                <p class="range-field">
+                    <h6>Left work at {{deviceData.maxHour}} hours <span class="weather-icon {{predictions.maxHour.icon}}"></span></h6>
                 </p>
             </div>
             <div ng-show="editing">
@@ -30,16 +33,21 @@
                         <textarea id="textarea1" class="materialize-textarea" ng-model="deviceData.description"></textarea>
                         <label for="last_name" class="active">Description</label>
                     </div>
+                    <div class="input-field col s12">
+                    <h5>When do you want to be warned about weather?</h5>
                     <p class="range-field">
-                        <input type="range" id="test5" min="0" max="24" />
+                        <h6>Go to work at {{deviceData.minHour}} hours</h6>
+                        <input type="range" id="test5" min="0" max="24" ng-model="deviceData.minHour" />
                     </p>
                     <p class="range-field">
-                        <input type="range" id="test5" min="0" max="24" />
+                        <h6>Left work at {{deviceData.maxHour}} hours</h6>
+                        <input type="range" id="test5" min="0" max="24" ng-model="deviceData.maxHour"/>
                     </p>
+                    </div>
                 </div>
             </div>
             <div class="input-field col s12">
-                <h5>Location</h5>
+                <h5>What area do you want to observe?</h5>
                 <a ng-show="editing" class="waves-effect waves-light btn" ng-click="centerMe()"><i class="material-icons left">my_location</i>Center me</a>
                 <br/>
             </div>

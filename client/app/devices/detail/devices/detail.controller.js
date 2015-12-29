@@ -1,13 +1,18 @@
 'use strict';
 
 angular.module('kairosApp')
-    .controller('DevicesDetailCtrl', ["$scope", "$location", "$routeParams", "Device", function($scope, $location, $routeParams, Device) {
+    .controller('DevicesDetailCtrl', ["$scope", "$location", "$routeParams", "Device", "Light", function($scope, $location, $routeParams, Device, Light) {
+
+
+        //clear-day, clear-night, rain, snow, sleet, wind, fog, cloudy, partly-cloudy-day, or partly-cloudy-night
+
 
         var marker;
         var map;
 
         $scope.Device = Device;
         $scope.deviceData;
+        $scope.predictions;
 
         function __init__() {
             if ($routeParams.id) {
@@ -18,8 +23,8 @@ angular.module('kairosApp')
                     if (!$scope.deviceData) {
                         $location.path("/devices");
                     } else {
+                        getLight($scope.deviceData.deviceId);
                         initMap();
-                        initSlider();
                     }
                 }, function() {
                     $location.path("/");
@@ -115,17 +120,14 @@ angular.module('kairosApp')
 
         }
 
-        function initSlider() {
-            var slider = document.getElementById('slider');
-            noUiSlider.create(slider, {
-                start: [20, 80],
-                connect: true,
-                step: 1,
-                range: {
-                    'min': 0,
-                    'max': 100
-                }
-            });
+        function getLight( id, onSuccess ){
+            Light.resource.get({
+                    id: id
+                }, function(data) {
+                    $scope.predictions = data;
+                }, function() {
+                    
+                });
         }
 
         function getLatLong(event) {

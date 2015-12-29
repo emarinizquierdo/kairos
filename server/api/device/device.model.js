@@ -10,6 +10,8 @@ var DeviceSchema = new Schema({
   status: Boolean,
   lat: Number,
   lng: Number,
+  minHour: Number,
+  maxHour: Number,
   userId: mongoose.Schema.Types.ObjectId
 });
 

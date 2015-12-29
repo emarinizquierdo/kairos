@@ -10,6 +10,8 @@
     <title></title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/8.2.1/nouislider.min.css" rel="stylesheet">
     <!--Import Google Icon Font-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!--Import materialize.css-->
@@ -31,8 +33,9 @@
     <![endif]-->
 
     <!-- Add your site or application content here -->
+    <div navbar></div>
     <main>
-        <div navbar></div>
+        
         <div ng-view =""></div>
         <div sidenav></div>
     </main>
@@ -87,6 +90,7 @@
           <script src="app/main/main.controller.js"></script>
           <script src="app/main/main.js"></script>
           <script src="components/Device/Device.service.js"></script>
+          <script src="components/Light/Light.service.js"></script>
           <script src="components/auth/auth.service.js"></script>
           <script src="components/auth/user.service.js"></script>
           <script src="components/footer/footer.directive.js"></script>
