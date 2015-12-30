@@ -7,14 +7,31 @@
 
 var _ = require('lodash');
 var Device = require('../device/device.model');
+var config = require('../../config/environment');
 var http = require("http");
 var https = require("https");
 
 // Gets a list of Lights
 exports.show = function(req, res) {
 
-    var minHour,
-        maxHour;
+    findDevice(req, res, function(device) {
+        getWeather(device.lat, device.lng, function(weather) {
+            return res.status(200).json(parseJson(weather, device));
+        });
+    });
+};
+
+// Gets a list of Lights
+exports.particleShow = function(req, res) {
+
+    findDevice(req, res, function(device) {
+        getWeather(device.lat, device.lng, function(weather) {
+            return res.status(200).send(parseParticleValue(weather, device));
+        });
+    });
+};
+
+function findDevice(req, res, onSuccess) {
 
     Device.find({
         deviceId: req.params.id
@@ -26,47 +43,80 @@ exports.show = function(req, res) {
             return res.status(404).send('Not Found');
         } else {
 
-            minHour = device[0].minHour;
-            maxHour = device[0].maxHour;
-            console.log(new Date().getTime())
-            getWeather(device[0].lat, device[0].lng, function(weather) {
+            if (device && device[0] && (typeof device[0].minHour !== "undefined") && (typeof device[0].maxHour !== "undefined")) {
 
-                var json = {
-                    minHour : {
-                        probability : 0,
-                        intensity : 0,
-                    },
-                    maxHour : {
-                        probability : 0,
-                        intensity : 0,
-                    }
-                };
+                onSuccess(device[0]);
 
-                json.minHour.probability = weather.hourly.data[minHour].precipProbability;
-                json.maxHour.probability = weather.hourly.data[maxHour].precipProbability;
-                json.minHour.icon = weather.hourly.data[minHour].icon;
-                json.maxHour.icon = weather.hourly.data[maxHour].icon;
-                json.minHour.intensity = weather.hourly.data[minHour].precipIntensity;
-                json.maxHour.intensity = weather.hourly.data[maxHour].precipIntensity;
+            } else {
+                return res.status(200).json({});
+            }
 
-                return res.status(200).json(json);
-            });
         }
     });
 }
 
+function parseJson(weather, device) {
+
+    var minHour = device.minHour,
+        maxHour = device.maxHour,
+        json = {
+            minHour: {
+                probability: 0,
+                intensity: 0,
+            },
+            maxHour: {
+                probability: 0,
+                intensity: 0,
+            }
+        };
+
+    json.minHour.probability = weather.hourly.data[minHour].precipProbability;
+    json.maxHour.probability = weather.hourly.data[maxHour].precipProbability;
+    json.minHour.icon = weather.hourly.data[minHour].icon;
+    json.maxHour.icon = weather.hourly.data[maxHour].icon;
+    json.minHour.intensity = weather.hourly.data[minHour].precipIntensity;
+    json.maxHour.intensity = weather.hourly.data[maxHour].precipIntensity;
+
+    return json;
+}
+
+function parseParticleValue(weather, device){
+
+	var minHour = device.minHour,
+        maxHour = device.maxHour,
+        minValue,
+        maxValue,
+        minProbability,
+        minIntensity,
+        maxProbability,
+        maxIntensity;
+
+    minProbability = weather.hourly.data[minHour].precipProbability;
+    maxProbability = weather.hourly.data[maxHour].precipProbability;
+    minIntensity = weather.hourly.data[minHour].precipIntensity;
+    maxIntensity = weather.hourly.data[maxHour].precipIntensity;
+    minIntensity = (minIntensity == 0) ? 0 : (minIntensity <= 2.5) ? 0.2 : (minIntensity < 7.6) ? 0.5 : 0.85;
+    maxIntensity = (maxIntensity == 0) ? 0 : (maxIntensity <= 2.5) ? 0.2 : (maxIntensity < 7.6) ? 0.5 : 0.85;
+
+    minValue = (minProbability + minIntensity) / 2;
+    maxValue = (maxProbability + maxIntensity) / 2;
+
+    return (minValue > maxValue) ? "" + minValue : "" + maxValue;
+
+}
+
 function getWeather(lat, lng, callback) {
 
-	//https://developer.forecast.io/docs/v2
+    //https://developer.forecast.io/docs/v2
     var options = {
         host: 'api.forecast.io',
         port: 443,
-        path: '/forecast/b290219f260ca3a384400c3a019b21fd/',
+        path: '/forecast/' + config.weather.apiKey + '/',
         method: 'GET',
         json: true
     };
 
-    options.path += lat + "," + lng + "," + Math.floor(new Date().getTime() / 1000) + "?units=si&exclude=daily,flags";
+    options.path += lat + "," + lng + "," + Math.floor(new Date().getTime() / 1000) + config.weather.parameters;
 
     getJson(options, function(statusCode, result) {
         callback(result);

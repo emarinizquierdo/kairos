@@ -14,5 +14,10 @@ module.exports = {
         callbackURL: (process.env.DOMAIN || '') + '/auth/google/callback'
     },
 
-  seedDB: false
+  weather: {
+    apiKey : process.env.WEATHER_API || 'b290219f260ca3a384400c3a019b21fd',
+    parameters : "?units=si&exclude=daily,flags"
+  },
+
+  seedDB: false,
 };

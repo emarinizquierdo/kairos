@@ -29,10 +29,13 @@ angular.module('kairosApp').directive('navbar', ['$location', 'Auth', function($
 
             $element.find('.dropdown-button').dropdown();
 
+            $element.find('.button-collapse').sideNav({
+                closeOnClick: true // Closes side-nav on <a> clicks, useful for Angular/Meteor
+            });
 
             $scope.signOut = function() {
 
-                
+
 
             };
 
