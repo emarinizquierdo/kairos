@@ -5,6 +5,7 @@ angular.module('kairosApp')
     $routeProvider
       .when('/devices', {
         templateUrl: 'app/devices/devices.html',
-        controller: 'DevicesCtrl'
+        controller: 'DevicesCtrl',
+        authenticate: true
       });
   });

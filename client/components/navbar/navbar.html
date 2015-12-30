@@ -1,9 +1,7 @@
 <nav>
     <div class="nav-wrapper">
         <ul id="slide-out" class="side-nav">
-            <li class="logo"><a id="logo-container" href="http://materializecss.com/" class="brand-logo">
-            <object id="front-page-logo" type="image/svg+xml" >Your browser does not support SVG</object></a></li>
-            <li><a href="devices">My devices</a></li>
+            <li ng-show="isLoggedIn()"><a href="devices">My devices</a></li>
             <li ng-show="isAdmin()" ng-class="{active: isActive('/admin')}"><a href="/admin">Admin</a></li>
             <li ng-hide="isLoggedIn()" ng-class="{active: isActive('/signup')}"><a href="/signup" class="pointer">Sign Up</a></li>
             <li ng-hide="isLoggedIn()" ng-class="{active: isActive('/login')}"><a href="/login" class="pointer">Sign In</a></li>
@@ -15,7 +13,7 @@
             <a href="/" class="brand-logo"><!--MOTO WEATHER--></a>
         </div>
         <ul id="nav-mobile" class="right hide-on-med-and-down">
-            <li><a href="devices">My devices</a></li>
+            <li ng-show="isLoggedIn()"><a href="devices">My devices</a></li>
             <li ng-show="isAdmin()" ng-class="{active: isActive('/admin')}"><a href="/admin">Admin</a></li>
             <li ng-hide="isLoggedIn()" ng-class="{active: isActive('/signup')}"><a href="/signup" class="pointer">Sign Up</a></li>
             <li ng-hide="isLoggedIn()" ng-class="{active: isActive('/login')}"><a href="/login" class="pointer">Sign In</a></li>
