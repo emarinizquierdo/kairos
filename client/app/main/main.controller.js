@@ -16,6 +16,10 @@ angular.module('kairosApp')
       $scope.newThing = '';
     };
 
+    $(document).ready(function(){
+      $('.parallax').parallax();
+    });
+
     $scope.deleteThing = function(thing) {
       $http.delete('/api/things/' + thing._id);
     };
