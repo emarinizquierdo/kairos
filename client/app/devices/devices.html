@@ -1,9 +1,9 @@
 <div class="container">
     <div class="row">
-        <h4>My devices</h4>
+        <h4>My drop cubes</h4>
         <ul class="collection">
             <li class="collection-item avatar pointer" ng-repeat="device in Device.data" ng-click="goToDetail(device._id)">
-                <img src="https://hackster.imgix.net/uploads/avatar/file/2813/spark-mark-400px.png" alt="" class="circle">
+                <span class="blue-cube circle"></span>
                 <span class="title">{{device.deviceId}}</span>
                 <p>
                     {{device.name}}
@@ -13,7 +13,7 @@
         </ul>
         <ul class="collapsible hoverable" data-collapsible="accordion">
             <li>
-                <div class="collapsible-header"><i class="material-icons">input</i>Add a new device</div>
+                <div class="collapsible-header"><i class="material-icons">input</i>Add a new drop cube</div>
                 <div class="collapsible-body">
                     <div class="container margintop">
                         <div class="row">

@@ -50,6 +50,7 @@ angular.module('kairosApp')
             Device.resource.update(device, function(data) {
                 $scope.deviceData = data;
                 $scope.edit(false);
+                getLight($scope.deviceData.deviceId);
             }, function() {
                 $scope.edit(false);
             });

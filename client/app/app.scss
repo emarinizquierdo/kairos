@@ -7,6 +7,15 @@ $fa-font-path: "/bower_components/font-awesome/fonts";
  * App-wide Styles
  */
 
+/**
+ * Variables
+ */
+$clear-color: #008ccf;
+
+.exo{
+	font-family: 'Exo', sans-serif;
+}
+
 .browsehappy {
     margin: 0.2em 0;
     background: #ccc;
@@ -14,8 +23,16 @@ $fa-font-path: "/bower_components/font-awesome/fonts";
     padding: 0.2em 0;
 }
 
+main {
+	margin-top: 64px;
+}
+
 .pointer{
 	cursor:pointer;
+}
+
+.modal {
+	    margin-top: 44px;
 }
 
 /* Responsive: Portrait tablets and up */
@@ -23,6 +40,13 @@ $fa-font-path: "/bower_components/font-awesome/fonts";
     .container {
         max-width: 730px;
     }
+}
+
+@media screen and (max-width: 600px) {
+
+    main {
+		margin-top: 56px;
+	}
 }
 
 // Component styles are injected through grunt

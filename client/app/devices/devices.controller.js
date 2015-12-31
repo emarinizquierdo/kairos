@@ -35,8 +35,8 @@ angular.module('kairosApp').controller('DevicesCtrl', ["$scope", "$location", "D
 
     $scope.deleteDevice = function() {
         $('#modal1').closeModal();
-        Device.resource.delete(toDelete, function(data) {
-            localDelete(Device.data, data[0]);
+        Device.resource.delete({id : toDelete._id}, function(data) {
+            localDelete(Device.data, toDelete);
         }, function(e) {
 
         })

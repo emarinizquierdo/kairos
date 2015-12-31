@@ -32,3 +32,22 @@
 .navbar-text {
   margin-left: 15px;
 }
+
+.trademark-parallax{
+    text-align : center;
+    height:100%; width:100%;
+    background-color:$clear-color;
+}
+
+.trademark-main{
+    color:white;
+}
+
+#logo-big{
+    background-image: url('/assets/images/cube.png');
+    display: inline-block;
+    width: 100px;
+    height: 100px;
+    background-size: contain;
+    margin: auto;
+}

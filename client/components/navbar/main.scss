@@ -1,7 +1,31 @@
-nav{
-	background-color: #766A8C;
+nav {
+    background-color: #0485C3;
+    position: fixed;
+    z-index: 9999999999999;
 }
 
-.title-wrapper{
-	margin-left: 15px;
+
+/*008ccf;*/
+
+.title-wrapper {
+    margin-left: 15px;
+}
+
+#logo-small {
+    background-image: url("/assets/images/cube.png");
+    display: inline-block;
+    width: 43px;
+    height: 43px;
+    background-size: contain;
+    margin: 10px;
+    float: left;
+}
+
+@media screen and (max-width: 600px) {
+
+    #logo-small {
+	    width: 34px;
+	    height: 34px;
+	    margin: 10px;
+	}
 }
