@@ -42,7 +42,9 @@ angular.module('kairosApp', [
     };
   })
 
-  .run(function ($rootScope, $location, Auth) {
+  .run(function ($rootScope, $location, Auth, $timeout) {
+    $rootScope.hideNavLogo = true;
+
     // Redirect to login if route requires auth and you're not logged in
     $rootScope.$on('$routeChangeStart', function (event, next) {
       Auth.isLoggedInAsync(function(loggedIn) {
@@ -51,5 +53,20 @@ angular.module('kairosApp', [
           $location.path('/login');
         }
       });
+      hideNavLogo();
     });
+
+
+
+    function hideNavLogo(){
+
+        if($location.path() == '/'){
+          $rootScope.inMain = true;
+          $rootScope.hideNavLogo = true;
+        }else{
+          $rootScope.inMain = false;
+          $rootScope.hideNavLogo = false;
+        }
+    }
+
   });

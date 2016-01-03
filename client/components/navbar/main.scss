@@ -1,7 +1,11 @@
 nav {
     background-color: #0485C3;
     position: fixed;
-    z-index: 9999999999999;
+    z-index: 997;
+}
+
+.side-nav{
+    z-index: 1000;
 }
 
 
@@ -11,8 +15,18 @@ nav {
     margin-left: 15px;
 }
 
+
+.brand-logo-hide {
+    opacity : 0;
+}
+
+nav.plain{
+    background-color: $clear-main-color;
+    box-shadow: none;
+}
+
 #logo-small {
-    background-image: url("/assets/images/cube.png");
+    background-image: url("/assets/images/cube_60.png");
     display: inline-block;
     width: 43px;
     height: 43px;

@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('kairosApp')
-  .controller('MainCtrl', function ($scope, $http) {
+  .controller('MainCtrl', function ($rootScope, $scope, $http) {
     $scope.awesomeThings = [];
 
     $http.get('/api/things').success(function(awesomeThings) {
