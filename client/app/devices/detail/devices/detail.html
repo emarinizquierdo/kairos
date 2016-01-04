@@ -17,6 +17,7 @@
                 <p class="range-field">
                     <h6>Left work at {{deviceData.maxHour}} hours <span class="weather-icon {{predictions.maxHour.icon}}"></span></h6>
                 </p>
+                <span ng-show="predictions.time">(prediction for {{predictions.time * 1000 | date:'dd/MM/yyyy'}})</span>
             </div>
             <div ng-show="editing">
                 <div class="row">
