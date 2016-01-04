@@ -172,7 +172,7 @@ function getJson(options, onResult) {
 
 var toLocalTime = function(offset) {
     var d = new Date();
-    var offset = (offset / 3600) * -1;
-    var n = new Date(d.getTime() + offset).getHours();
+    var offset = ((new Date().getTimezoneOffset() + (offset / 60))) * -1;
+    var n = new Date(d.getTime() + offset * 60 * 1000).getHours();
     return n;
 };
