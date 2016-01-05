@@ -10,6 +10,7 @@ $fa-font-path: "/bower_components/font-awesome/fonts";
 /**
  * Variables
  */
+$dark-main-color: #0485C3;
 $clear-main-color: #009FCF;
 
 .exo{
@@ -43,10 +44,15 @@ main {
 	    margin-top: 44px;
 }
 
+.flaticon {
+    color: white;
+    margin-right: 7px;
+}
+
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {
     .container {
-        max-width: 730px;
+        max-width: 930px;
     }
 }
 
