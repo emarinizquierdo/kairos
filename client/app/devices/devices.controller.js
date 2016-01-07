@@ -44,7 +44,7 @@ angular.module('kairosApp').controller('DevicesCtrl', ["$scope", "$location", "D
 
     function localDelete(array, data) {
         angular.forEach(array, function(item, index) {
-            if (item.id === data.id) {
+            if (item._id === data._id) {
                 array.splice(index, 1);
                 return false;
             }

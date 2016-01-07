@@ -4,17 +4,27 @@ $fa-font-path: "/bower_components/font-awesome/fonts";
 @import 'font-awesome/scss/font-awesome';
 
 /**
- * App-wide Styles
- */
-
-/**
  * Variables
  */
 $dark-main-color: #0485C3;
 $clear-main-color: #009FCF;
+$very-clear-main-color: #90caf9;
 
+
+/**
+ * App-wide Styles
+ */
+ 
 .exo{
 	font-family: 'Exo', sans-serif;
+}
+
+.background-blue{
+    background-color: $clear-main-color;
+}
+
+.color-blue {
+    color : $clear-main-color;
 }
 
 .browsehappy {
@@ -72,4 +82,5 @@ main {
 @import 'main/main.scss';
 @import 'footer/footer.scss';
 @import 'navbar/main.scss';
+@import 'subnavbar/subnavbar.scss';
 // endinjector
