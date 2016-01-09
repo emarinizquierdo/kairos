@@ -1,9 +1,11 @@
 'use strict';
 
-angular.module('kairosApp').controller('DevicesCtrl', ["$scope", "$location", "Device", function($scope, $location, Device) {
+angular.module('kairosApp').controller('DevicesCtrl', ["$scope", "$location", "Device", "Help", "Note", function($scope, $location, Device, Help, Note) {
 
     $scope.Device = Device;
     $scope.newDevice;
+    $scope.help = Help;
+    $scope.note = Note;
 
     var toDelete = null;
 

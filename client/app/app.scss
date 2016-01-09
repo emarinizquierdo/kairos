@@ -76,11 +76,14 @@ main {
 // Component styles are injected through grunt
 // injector
 @import 'account/login/login.scss';
+@import 'account/settings/settings.scss';
 @import 'admin/admin.scss';
 @import 'devices/detail/devices/detail.scss';
 @import 'devices/devices.scss';
 @import 'main/main.scss';
 @import 'footer/footer.scss';
+@import 'help-block/help-block.scss';
 @import 'navbar/main.scss';
+@import 'note/note.scss';
 @import 'subnavbar/subnavbar.scss';
 // endinjector

@@ -28,15 +28,15 @@
                 <div class="row">
                     <h4>{{deviceData.name}}</h4>
                     <div class="input-field col s6 bordered">
-                        <input id="first_name" type="text" class="validate" ng-model="deviceData.deviceId">
+                        <input id="first_name" type="text" class="validate" ng-model="deviceData.deviceId" maxlength="50">
                         <label for="first_name" class="active">Id</label>
                     </div>
                     <div class="input-field col s6 bordered">
-                        <input id="first_name" type="text" class="validate" ng-model="deviceData.name">
+                        <input id="first_name" type="text" class="validate" ng-model="deviceData.name" maxlength="40">
                         <label for="first_name" class="active">Name</label>
                     </div>
                     <div class="input-field col s12">
-                        <textarea id="textarea1" class="materialize-textarea" ng-model="deviceData.description"></textarea>
+                        <textarea id="textarea1" class="materialize-textarea" ng-model="deviceData.description" maxlength="250"></textarea>
                         <label for="last_name" class="active">Description</label>
                     </div>
                     <div class="input-field col s12">
